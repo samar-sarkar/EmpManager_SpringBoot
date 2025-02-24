@@ -1,6 +1,7 @@
 package com.myFirstProject.empManager.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,20 @@ public class EmployeeServiceImp implements EmployeeService {
         return employeeRepository.findAll().stream()
                 .map(employeeMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public Optional<EmployeeDTO> readEmployeeById(Long id) {
+        return employeeRepository.findById(id).map(employeeMapper::toDTO);
+    }
+
+    @Override
+    public Boolean updateEmployee(long id, EmployeeDTO employeeDTO) {
+        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Data not found"));
+        employee.setName(employeeDTO.getName());
+        employee.setPhone(employeeDTO.getPhone());
+        employee.setEmail(employeeDTO.getEmail());
+        employeeRepository.save(employee);
+        return true;
     }
 
     @Override
