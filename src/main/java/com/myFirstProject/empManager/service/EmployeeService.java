@@ -2,12 +2,15 @@ package com.myFirstProject.empManager.service;
 
 import java.util.List;
 
-import com.myFirstProject.empManager.model.Employee;
+import com.myFirstProject.empManager.entity.Employee;
+import com.myFirstProject.empManager.model.EmployeeDTO;
 
 public interface EmployeeService {
 
-    Boolean createEmployee(Employee employee);
-    List<Employee> readEmployee();
+    Boolean createEmployee(EmployeeDTO employeeDto);
+
+    List<EmployeeDTO> readEmployee();
+
     Boolean deleteEmployee(long id);
-    
-} 
+
+}

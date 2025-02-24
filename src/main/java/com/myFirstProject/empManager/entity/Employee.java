@@ -1,4 +1,4 @@
-package com.myFirstProject.empManager.model;
+package com.myFirstProject.empManager.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
